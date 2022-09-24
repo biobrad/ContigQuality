@@ -12,24 +12,35 @@ Run after samscript - requires standalone datapane conda environment
 
 Script to align sequences using bwa and then generating coverage stats and quality scores for each contig.
 
-usage: place samscript in tormes/bin  
+### usage:  
+place samscript in miniconda3/tormes/bin  
 
-after activating the tormes conda environment, enter: samscript <tormes output folder path> <cpus>  (leave trailing '/' off folder name)
+after activating the tormes conda environment enter:  
+samscript \<tormes output folder path\> \<cpus to use\>    
+(leave trailing '/' off folder name)  
 Example: samscript /home/blogsj/tormesresults 24
 
 ### meanlengthanddepth.py
 
 Can be run after running samscript to generate visualisations of contig quality data  
-needs a separate environment at this stage due to incompatibility with current tormes build.  
+needs a separate environment at this stage due to incompatibility with current tormes dependencies
+
+### Create datapane conda environment:  
 
 conda create -n datapane -c conda-forge datapane=0.14.0 plotly  
-conda activate datapane  
-run this file with an argument of tormes output directory  
-example: meanlengthanddepth.py /home/jblogs/tormesoutputdirectory
 
-Output generated:
+conda activate datapane  
+
+run this file with an argument of tormes results output directory after running the tormes pipeline and after running samscript.
+
+example: meanlengthanddepth.py /home/jblogs/tormesoutputdirectory  
+(again leave off the trailing folder '/')  
+
+### Output generated:  
+### .bam files
 Samscript will generate bam files for all sequences with fastqfiles in tormesoutputfolder/bams
-output from samscript will create files in tormesoutputfolder/genome_stats/<sequence>/
+output from samscript will create files in tormesoutputfolder/genome_stats/\<sequence>\/coverage.report  
+
 eg:  
 #rname	startpos	endpos	numreads	covbases	coverage	meandepth	meanbaseq	meanmapq  
 NODE_1_length_98032_cov_38.894921	1	98032	52495	98032	100	80.1366	33.7	60  
