@@ -4,7 +4,9 @@ Short Script to Generate read depth of contigs from assembled microbial genomes 
 ### samscript
 
 Script to extract read depth from samtools
+
 usage: place samscript and meanlengthanddepth.py in tormes/bin
+
 after activating the tormes conda environment, enter: samscript <tormes output folder path> <cpus>
 
 ### meanlengthanddepth.py
