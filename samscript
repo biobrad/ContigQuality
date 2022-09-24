@@ -1,11 +1,17 @@
 #!/bin/bash
 
 ### Script to extract read depth from samtools
+### usage: place samscript and meanlengthanddepth.py in tormes/bin
+### after activating the tormes conda environment, enter: samscript <tormes output folder path> <cpus>
 
-CPUS=24
-METADATA=samples_metadata.txt
-outfol=threestenos
-OUTWD=${PWD}/${outfol}
+CPUS=${2}
+OUTWD=${1}
+
+# extract metadata from report files and create reportfiles folder for later use
+tar -f ${OUTWD}/report_files.tgz  -zxv report_files/metadata.txt
+mv report_files/ ${OUTWD}
+#
+METADATA=${OUTWD}/report_files/metadata.txt
 #
 # create bam file folder
 mkdir ${OUTWD}/bams
@@ -31,7 +37,7 @@ bwa mem -t ${CPUS} ${OUTWD}/bams/${GENOME}.fasta ${OUTWD}/bams/${READS}.ok_1.fas
 # run coverage/depth
 #
 samtools coverage -o ${OUTWD}/genome_stats/${GENOME}_genome_stats/coverage.report --reference ${OUTWD}/bams/${GENOME}.fasta ${OUTWD}/bams/${GENOME}.bwa.bam
-awk -v GENOME="$GENOME" 'BEGIN{OFS=",";} {split($1,a,"_"); sub(/\.[0-9]+/,"",$7); sub(/\.[0-9]+/,"",$9)} {print GENOME,a[2],a[4],$7,$9}' ${OUTWD}/genome_stats/${GENOME}_genome_stats/coverage.report | sed '1s/.*/seq,contig,length,meandepth,meanqual/' > ${OUTWD}/genome_stats/${GENOME}_genome_stats/contlengdepqual.csv
+awk -v GENOME="$GENOME" 'BEGIN{OFS=",";} {split($1,a,"_"); sub(/\.[0-9]+/,"",$7); sub(/\.[0-9]+/,"",$9)} {print GENOME,a[2],a[4],$7,$9}' ${OUTWD}/genome_stats/${GENOME}_genome_stats/coverage.report | sed '1s/.*/seq,contig,length,meandepth,meanqual/' > ${OUTWD}/report_files/${GENOME}contlengdepqual.csv
 
 rm -rf ${OUTWD}/bams/${READS}.ok_{1,2}.fastq.gz
 rm -rf ${OUTWD}/bams/${GENOME}.fasta*
