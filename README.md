@@ -11,7 +11,7 @@ Run after samscript - requires standalone datapane conda environment
 ### samscript
 
 Script to extract read depth from samtools  
-usage: place samscript and meanlengthanddepth.py in tormes/bin  
+usage: place samscript in tormes/bin  
 after activating the tormes conda environment, enter: samscript <tormes output folder path> <cpus>  
 
 ### meanlengthanddepth.py
