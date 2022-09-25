@@ -24,7 +24,7 @@ samscript /home/blogsj/tormesresults 24
 ```
 
 ### meanlengthanddepth.py  
-Can be run after running samscript to generate visualisations of contig quality data  
+Can be run from any location after running samscript to generate visualisations of contig quality data  
 needs a separate environment at this stage due to incompatibility with current tormes dependencies
 
 ### Create datapane conda environment:  
