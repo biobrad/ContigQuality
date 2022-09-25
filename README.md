@@ -36,8 +36,9 @@ conda activate datapane
 
 run this file with an argument of tormes results output directory after running the tormes pipeline and after running samscript.
 
-example: meanlengthanddepth.py /home/jblogs/tormesoutputdirectory  
-(again leave off the trailing folder '/')  
+example: meanlengthanddepth.py /home/blogsj/tormesresults  
+
+(again leave off the trailing '/' from the foldername)  
 
 ### Output generated:  
 ### .bam files
