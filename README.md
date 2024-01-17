@@ -12,6 +12,12 @@ Short Script to Generate read depth of contigs from assembled microbial genomes 
 Run after samscript - requires standalone datapane conda environment
 
 ## usage:
+
+activate tormes environment:
+conda activate tormes
+install samtools and bwa:
+conda install -c bioconda bwa samtools
+
 ### samscript.sh  
 * Place samscript.sh in miniconda3/tormes/bin  
 * After activating the tormes conda environment enter: samscript \<tormes output folder path\> \<cpus to use\>  
