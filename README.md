@@ -13,10 +13,15 @@ Run after samscript - requires standalone datapane conda environment
 
 ## usage:
 
+### Dependencies
+
 activate tormes environment:
-conda activate tormes
+
+```conda activate tormes```
+
 install samtools and bwa:
-conda install -c bioconda bwa samtools
+
+```conda install -c bioconda bwa samtools```
 
 ### samscript.sh  
 * Place samscript.sh in miniconda3/tormes/bin  
@@ -26,7 +31,7 @@ conda install -c bioconda bwa samtools
 Example: 
 
 ```
-samscript /home/blogsj/tormesresults 24
+samscript.sh /home/blogsj/tormesresults 24
 ```
 
 ### meanlengthanddepth.py  
